@@ -3,7 +3,6 @@ import DataStore from '../../expand/dao/DataStore'
 
 export function onLoadPopularData(storeName, url) {
     return dispatch => {
-        console.log('dispath', dispatch)
         dispatch({type: Types.POPULAR_REFEESHING, storeName: storeName});
         let dataStore = new DataStore();
         dataStore.fetchData(url)//异步action与数据流

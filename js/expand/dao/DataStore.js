@@ -6,11 +6,9 @@ export default class DataStore {
         const currectDate = new Date()
         const targetDate = new Date()
         targetDate.setTime(timeStamp)
-        console.log('is Vadlid?')
         if (currectDate.getMonth() !== targetDate.getMonth()) return false
         if (currectDate.getDate() !== targetDate.getDate()) return false
         if (currectDate.getHours() - targetDate.getHours() > 4) return false
-        console.log('is valid?')
         return true
     }
 
@@ -19,6 +17,7 @@ export default class DataStore {
             this.fetchLocalData(url)
             .then ((wrapData) =>{
                 if (wrapData && DataStore.checkTimestampValid(wrapData.timestamp)) {
+                    
                     resolve(wrapData)
                 } else {
                     this.fetchNetworkData(url).then((data) => {
